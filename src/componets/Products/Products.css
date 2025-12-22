@@ -34,6 +34,7 @@
   justify-content:space-between;
   gap:16px;
   margin-bottom: 18px;
+  font-family: popins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
 
 .pmTitle{

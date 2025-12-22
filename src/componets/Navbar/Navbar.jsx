@@ -22,7 +22,6 @@ export default function Navbar() {
           </div>
           <div className="brand__text">
             <div className="brand__title">Admin Panel</div>
-            <div className="brand__subtitle">Manage your store</div>
           </div>
         </div>
       </div>

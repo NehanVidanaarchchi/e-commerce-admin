@@ -130,13 +130,6 @@ export default function Dashboard() {
             icon={<FiClock />}
           />
         </div>
-
-        <section className="dashPanel">
-          <div className="panelTitle">Quick Notes</div>
-          <div className="panelBody">
-            Total Products is now live from Firestore collection .
-          </div>
-        </section>
       </main>
     </div>
   );
