@@ -1,0 +1,367 @@
+:root{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#667085;
+  --line: rgba(15, 23, 42, 0.10);
+
+  --primary:#6d28d9;
+  --primary2:#7c3aed;
+
+  --danger:#ef4444;
+
+  --shadow: 0 18px 30px rgba(15, 23, 42, 0.08);
+  --shadowStrong: 0 30px 80px rgba(15, 23, 42, 0.25);
+  --radius: 16px;
+}
+
+*{ box-sizing:border-box; }
+
+.bmLayout{
+  min-height:100vh;
+  display:flex;
+  background: var(--bg);
+  overflow-x:hidden;
+  font-family:"Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+.bmMain{
+  flex:1;
+  padding: 26px;
+  max-width:100%;
+}
+
+.bmHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  margin-bottom:14px;
+}
+
+.bmTitle{
+  margin:0;
+  font-size: 22px;
+  font-weight:1000;
+  color: var(--text);
+}
+
+.bmSub{
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.bmCard{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.bmForm{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.bmField label{
+  display:block;
+  font-size: 12px;
+  font-weight: 900;
+  color:#475467;
+  margin-bottom: 8px;
+}
+
+.bmField input{
+  width:100%;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(15,23,42,.12);
+  padding: 0 14px;
+  outline:none;
+  font-size: 14px;
+}
+
+.bmField input:focus{
+  border-color: rgba(124,58,237,.45);
+  box-shadow: 0 0 0 4px rgba(124,58,237,.12);
+}
+
+.bmTiny{
+  margin-top: 6px;
+  font-size: 12px;
+  color:#98a2b3;
+}
+
+.bmUpload{
+  grid-column: span 2;
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+
+.bmUploadBtn{
+  height: 46px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(15,23,42,.12);
+  background:#fff;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap: 10px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.bmUploadNote{
+  color:#98a2b3;
+  font-weight: 800;
+  font-size: 13px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.bmPreviewBox{
+  grid-column: span 2;
+  border-radius: 16px;
+  border: 1px dashed rgba(15,23,42,.18);
+  background:#fafbff;
+  padding: 12px;
+  display:flex;
+  justify-content:center;
+}
+
+.bmPreview{
+  width: 100%;
+  max-width: 860px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(15,23,42,.10);
+  background:#fff;
+}
+
+.bmAddBtn{
+  grid-column: span 2;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  cursor:pointer;
+  font-weight: 1000;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--primary2), var(--primary));
+  box-shadow: 0 18px 45px rgba(124,58,237,.28);
+  transition: transform .15s ease;
+}
+
+.bmAddBtn:hover{ transform: translateY(-1px); }
+.bmAddBtn:disabled{ opacity:.7; cursor:not-allowed; transform:none; }
+
+.bmSliderWrap{
+  margin-top: 18px;
+}
+
+.bmSlider{
+  position: relative;
+  height: 300px;
+  border-radius: 18px;
+  overflow:hidden;
+  background:#000;
+  box-shadow: var(--shadowStrong);
+}
+
+.bmTrack{
+  height:100%;
+  display:flex;
+  transition: transform .6s ease;
+}
+
+.bmSlide{
+  min-width:100%;
+  height:100%;
+  position:relative;
+}
+
+.bmSlide img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform: scale(1.03);
+}
+
+.bmOverlay{
+  position:absolute;
+  inset:0;
+  background: linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.35), rgba(0,0,0,.08));
+}
+
+.bmContent{
+  position:absolute;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  color:#fff;
+  max-width: 560px;
+}
+
+.bmBadge{
+  display:inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.25);
+  backdrop-filter: blur(10px);
+  font-weight: 1000;
+  margin-bottom: 12px;
+}
+
+.bmContent h2{
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.bmContent h1{
+  margin:0;
+  font-size: 34px;
+  font-weight: 1000;
+  letter-spacing: -0.02em;
+}
+
+.bmEmpty{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-weight: 1000;
+}
+
+.bmNav{
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.20);
+  background: rgba(0,0,0,.50);
+  color:#fff;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  z-index: 3;
+}
+
+.bmNav.left{ left: 14px; }
+.bmNav.right{ right: 14px; }
+.bmNav svg{ font-size: 22px; }
+
+.bmDots{
+  position:absolute;
+  left:50%;
+  transform: translateX(-50%);
+  bottom: 12px;
+  display:flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.bmDot{
+  width: 10px;
+  height: 10px;
+  border:none;
+  border-radius: 999px;
+  background: rgba(255,255,255,.45);
+  cursor:pointer;
+  transition: width .2s ease, background .2s ease;
+}
+
+.bmDot.active{
+  width: 26px;
+  background:#fff;
+}
+
+.bmMeta{
+  margin-top: 10px;
+  display:flex;
+  justify-content:space-between;
+  gap: 10px;
+  color:#344054;
+  font-weight: 800;
+}
+
+.bmMetaSmall{
+  color:#98a2b3;
+  font-weight: 800;
+}
+
+.bmList{
+  margin-top: 18px;
+  display:grid;
+  gap: 12px;
+}
+
+.bmRow{
+  background:#fff;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+
+.bmRow img{
+  width: 86px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.bmRowText b{
+  display:block;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.bmRowText p{
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.bmTrash{
+  margin-left:auto;
+  border:none;
+  background: transparent;
+  color: var(--danger);
+  cursor:pointer;
+  font-size: 18px;
+}
+
+/* responsive */
+@media (max-width: 920px){
+  .bmMain{ padding: 18px; }
+  .bmForm{ grid-template-columns: 1fr; }
+  .bmUpload, .bmPreviewBox, .bmAddBtn{ grid-column: span 1; }
+  .bmSlider{ height: 260px; }
+  .bmContent h1{ font-size: 26px; }
+}
+
+@media (max-width: 520px){
+  .bmSlider{ height: 220px; }
+  .bmContent{ left: 16px; right: 16px; }
+  .bmContent h1{ font-size: 22px; }
+}

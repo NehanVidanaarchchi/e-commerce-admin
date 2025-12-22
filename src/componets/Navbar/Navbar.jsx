@@ -7,6 +7,8 @@ const menuItems = [
   { id: "dashboard", label: "Dashboard", path: "/dashboard", icon: <FiGrid /> },
   { id: "products", label: "Products", path: "/products", icon: <FiBox /> },
   { id: "orders", label: "Orders", path: "/orders", icon: <FiShoppingBag /> },
+  { id: "Salebaner", label: "Salebaner", path: "/Salebaner", icon: <FiShoppingBag /> },
+  { id: "Sales", label: "Sales", path: "/sales", icon: <FiShoppingBag /> },
 ];
 
 export default function Navbar() {
