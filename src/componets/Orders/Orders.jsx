@@ -24,7 +24,7 @@ export default function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [tab, setTab] = useState("all"); // all | pending | done
+  const [tab, setTab] = useState("all"); 
   const [search, setSearch] = useState("");
 
   useEffect(() => {
