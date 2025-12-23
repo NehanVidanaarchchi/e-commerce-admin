@@ -1,14 +1,14 @@
 import React from "react";
 import "./Navbar.css";
-import { FiGrid, FiBox, FiHome , FiShoppingBag} from "react-icons/fi";
+import { FiGrid, FiBox, FiHome , FiShoppingBag , FiImage , FiBarChart2 } from "react-icons/fi";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const menuItems = [
   { id: "dashboard", label: "Dashboard", path: "/dashboard", icon: <FiGrid /> },
   { id: "products", label: "Products", path: "/products", icon: <FiBox /> },
   { id: "orders", label: "Orders", path: "/orders", icon: <FiShoppingBag /> },
-  { id: "Salebaner", label: "Salebaner", path: "/Salebaner", icon: <FiShoppingBag /> },
-  { id: "Sales", label: "Sales", path: "/sales", icon: <FiShoppingBag /> },
+  { id: "salebanner", label: "Salebanner", path: "/salebanner", icon: <FiImage /> },
+  { id: "salereport", label: "Salereport", path: "/salereport", icon: <FiBarChart2 /> },
 ];
 
 export default function Navbar() {

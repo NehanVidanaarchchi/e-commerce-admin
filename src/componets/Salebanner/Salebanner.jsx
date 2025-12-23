@@ -154,7 +154,6 @@ export default function BannerMaker() {
   return (
     <div className="bmLayout">
       <Navbar />
-
       <main className="bmMain">
         <div className="bmHeader">
           <div>
