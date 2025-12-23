@@ -33,14 +33,14 @@ function AppRoutes() {
       <Route path="/salebanner" element={<Salebanner />} />
       <Route path="/salereport" element={<Salereport />} />
 
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
 
 export default function App() {
   return (
-    <MemoryRouter initialEntries={["/dashboard"]}>
+    <MemoryRouter initialEntries={["/"]}>
       <AppRoutes />
     </MemoryRouter>
   );
