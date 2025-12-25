@@ -23,22 +23,25 @@ export default function Login() {
       return;
     }
 
-    // Example credentials:
-    // email: admin@gmail.com
-    // pass : admin123
     setLoading(true);
     try {
+      // ✅ Example credentials:
+      // email: admin@gmail.com
+      // pass : admin123
       const ok = email === "admin@gmail.com" && password === "admin123";
       if (!ok) {
         setErr("Invalid admin credentials.");
         return;
       }
 
+      // ✅ MATCH App.js KEY
+      localStorage.setItem("adminLoggedIn", "true");
 
-      localStorage.setItem("admin_logged", "true");
+      // ✅ optional: reset last page so it doesn’t auto-open old page unexpectedly
+      localStorage.removeItem("admin:lastPage");
 
-      
-      navigate("/dashboard");
+      // ✅ go dashboard
+      navigate("/dashboard", { replace: true });
     } finally {
       setLoading(false);
     }
@@ -63,7 +66,6 @@ export default function Login() {
               type="email"
               value={form.email}
               onChange={(e) => onChange("email", e.target.value)}
-              placeholder="@gmail.com"
               autoComplete="email"
             />
           </div>
@@ -75,13 +77,13 @@ export default function Login() {
                 type={showPass ? "text" : "password"}
                 value={form.password}
                 onChange={(e) => onChange("password", e.target.value)}
-                
                 autoComplete="current-password"
               />
               <button
                 type="button"
                 className="showBtn"
                 onClick={() => setShowPass((s) => !s)}
+                aria-label={showPass ? "Hide password" : "Show password"}
               >
                 {showPass ? "Hide" : "Show"}
               </button>
