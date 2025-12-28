@@ -31,7 +31,7 @@ export default function Orders() {
     setLoading(true);
 
     const q = query(
-      collection(db, "orderReceipts"),
+      collection(db, "orders"),
       orderBy("createdAt", "desc")
     );
 
@@ -100,7 +100,7 @@ export default function Orders() {
 
   const markDone = async (orderId) => {
     try {
-      await updateDoc(doc(db, "orderReceipts", orderId), {
+      await updateDoc(doc(db, "orders", orderId), {
         status: "done",
         updatedAt: serverTimestamp(),
       });
@@ -113,7 +113,6 @@ export default function Orders() {
   return (
     <div className="ordersLayout">
       <Navbar />
-
       <main className="ordersMain">
         <div className="ordersHeader">
           <div>
