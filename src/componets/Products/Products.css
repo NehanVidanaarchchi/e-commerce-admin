@@ -34,7 +34,6 @@
   justify-content:space-between;
   gap:16px;
   margin-bottom: 18px;
-  font-family: popins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
 
 .pmTitle{
@@ -50,7 +49,7 @@
   color: var(--muted);
 }
 
-/* Add product button like screenshot */
+/* Add product button */
 .pmAddBtn{
   height: 44px;
   padding: 0 18px;
@@ -73,7 +72,7 @@
   box-shadow: 0 18px 34px rgba(109,40,217,.22);
 }
 
-/* Filters card (search + select) */
+/* Filters card */
 .pmFiltersCard{
   background: var(--card);
   border: 1px solid var(--line);
@@ -138,9 +137,7 @@
   overflow:hidden;
 }
 
-.pmTableWrap{
-  overflow:auto;
-}
+.pmTableWrap{ overflow:auto; }
 
 .pmTable{
   width:100%;
@@ -165,14 +162,19 @@
   font-size: 14px;
 }
 
-.pmTable tbody tr:hover{
-  background:#fbfcff;
-}
+.pmTable tbody tr:hover{ background:#fbfcff; }
 
 .pmEmpty{
   text-align:center;
   padding: 26px !important;
   color:#98a2b3;
+}
+
+/* ✅ 2 images wrapper */
+.pmImgs{
+  display:flex;
+  gap:10px;
+  align-items:center;
 }
 
 /* Image */
@@ -185,11 +187,7 @@
   background:#fff;
 }
 
-/* Name + description */
-.pmName{
-  font-weight: 900;
-  color: var(--text);
-}
+.pmName{ font-weight: 900; color: var(--text); }
 .pmDesc{
   margin-top: 6px;
   font-size: 13px;
@@ -197,7 +195,6 @@
   max-width: 680px;
 }
 
-/* Category pill */
 .pmCatPill{
   display:inline-flex;
   align-items:center;
@@ -210,13 +207,8 @@
   border: 1px solid #e5e7ff;
 }
 
-/* Price link style */
-.pmPrice{
-  font-weight: 900;
-  color:#4f46e5;
-}
+.pmPrice{ font-weight: 900; color:#4f46e5; }
 
-/* Stock green pill */
 .pmStockPill{
   display:inline-flex;
   align-items:center;
@@ -230,7 +222,6 @@
   font-size: 13px;
 }
 
-/* Actions icons like screenshot */
 .pmActions{
   display:flex;
   align-items:center;
@@ -244,20 +235,16 @@
   font-size: 18px;
   padding: 6px;
 }
+.pmEdit{ color:#4f46e5; }
+.pmDelete{ color:#ff0000; }
 
-.pmEdit{
-  color:#4f46e5;
-}
-
-.pmDelete{
-  color:#ff0000;
-}
-
-/* ---------- Modal (keep your existing modal styles) ---------- */
-.modalOverlay{
+/* =========================
+   ✅ NEW: USER FRIENDLY MODAL
+   ========================= */
+.pmModalOverlay{
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.45);
+  background: rgba(15, 23, 42, 0.55);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -265,16 +252,24 @@
   z-index: 999;
 }
 
-.modal{
-  width: min(620px, 100%);
+.pmModal{
+  width: min(860px, 100%);
   background:#fff;
   border-radius: 18px;
   border: 1px solid rgba(15, 23, 42, 0.10);
   box-shadow: var(--shadowStrong);
   overflow:hidden;
+  max-height: min(86vh, 860px); /* ✅ scrollable modal */
+  display:flex;
+  flex-direction: column;
 }
 
-.modalHead{
+/* Sticky header */
+.pmModalHead{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background:#fff;
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
@@ -283,32 +278,64 @@
   border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
-.modalTitle{
+.pmModalTitle{
   font-weight: 1000;
   color: var(--text);
+  font-size: 16px;
 }
 
-.modalHint{
+.pmModalHint{
   margin-top: 4px;
   font-size: 13px;
   color:#98a2b3;
+  font-weight: 700;
 }
 
-.modalBody{
-  padding: 14px 16px 16px;
+.pmCloseBtn{
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  background:#fff;
   display:grid;
-  gap: 12px;
+  place-items:center;
+  cursor:pointer;
+  color:#667085;
 }
 
-.field label{
+/* Scroll content */
+.pmModalBody{
+  padding: 14px 16px 16px;
+  overflow:auto;            /* ✅ scrolling area */
+  display:grid;
+  gap: 14px;
+}
+
+/* Sections */
+.pmSection{
+  background: #fbfcff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.pmSectionTitle{
+  font-weight: 1000;
+  color:#0f172a;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.pmField label{
   display:block;
   font-size: 12px;
   color:#475467;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 8px;
 }
 
-.field input{
+.pmField input,
+.pmField select{
   width:100%;
   height: 48px;
   border: 1px solid rgba(15, 23, 42, 0.10);
@@ -320,18 +347,8 @@
   background:#fff;
   transition: box-shadow .15s ease, border-color .15s ease;
 }
-.field input:focus{
-  border-color: rgba(124,58,237,.45);
-  box-shadow: 0 0 0 4px rgba(124,58,237,.12);
-}
 
-.grid2{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.field textarea{
+.pmField textarea{
   width:100%;
   border: 1px solid rgba(15, 23, 42, 0.10);
   border-radius: 12px;
@@ -343,93 +360,141 @@
   resize: none;
   transition: box-shadow .15s ease, border-color .15s ease;
 }
-.field textarea:focus{
+
+.pmField input:focus,
+.pmField select:focus,
+.pmField textarea:focus{
   border-color: rgba(124,58,237,.45);
   box-shadow: 0 0 0 4px rgba(124,58,237,.12);
 }
 
-.field select{
-  width:100%;
-  height: 48px;
-  border: 1px solid rgba(15, 23, 42, 0.10);
-  border-radius: 12px;
-  padding: 0 14px;
-  outline:none;
-  font-size: 14px;
-  color: var(--text);
+.pmError{
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #dc2626;
+}
+
+.pmGrid2{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* Images layout */
+.pmImgGrid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.pmImgCard{
   background:#fff;
-  transition: box-shadow .15s ease, border-color .15s ease;
-}
-.field select:focus{
-  border-color: rgba(124,58,237,.45);
-  box-shadow: 0 0 0 4px rgba(124,58,237,.12);
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  border-radius: 16px;
+  padding: 12px;
 }
 
-/* Upload */
-.uploadRow{
+.pmImgCardTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom: 10px;
+}
+
+.pmImgCardTitle{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight: 1000;
+  color:#0f172a;
+}
+
+.pmChip{
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  color:#fff;
+  background: linear-gradient(135deg, var(--primary2), var(--primary));
+}
+.pmChip.ghost{
+  background:#f1f5f9;
+  color:#334155;
+}
+
+.pmUploadRow{
   display:flex;
   align-items:center;
   gap:12px;
+  margin-top: 10px;
 }
 
-.uploadBtn{
+.pmUploadBtn{
   height:44px;
   padding:0 14px;
   border-radius: 12px;
   border: 1px solid rgba(15, 23, 42, 0.12);
   background:#fff;
   color:#0f172a;
-  font-weight:900;
+  font-weight:1000;
   cursor:pointer;
   display:inline-flex;
   align-items:center;
   gap:10px;
+  white-space: nowrap;
 }
 
-.uploadNote{
+.pmFileName{
   color:#98a2b3;
   font-size:13px;
-  font-weight:700;
+  font-weight:800;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
 }
 
-.previewBox{
-  margin-top:12px;
+.pmPreviewBox{
+  margin-top: 12px;
   border: 1px dashed rgba(15, 23, 42, 0.18);
   border-radius: 16px;
-  padding: 12px;
+  padding: 10px;
   background: #fafbff;
   display:flex;
   justify-content:center;
 }
 
-.previewImg{
-  width: 140px;
-  height: 140px;
+.pmPreviewBox img{
+  width: 160px;
+  height: 160px;
   border-radius: 16px;
   object-fit: cover;
   border: 1px solid rgba(15, 23, 42, 0.10);
   background:#fff;
 }
 
-/* Modal actions + existing buttons */
-.modalActions{
+/* Sticky footer */
+.pmModalFooter{
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background:#fff;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 12px 16px;
   display:flex;
   justify-content:flex-end;
   gap:10px;
-  padding-top: 6px;
 }
 
-.primaryBtn{
+.pmBtnPrimary{
   height: 44px;
   padding: 0 16px;
   border: none;
   border-radius: 999px;
   cursor: pointer;
   color: #fff;
-  font-weight: 900;
+  font-weight: 1000;
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -437,35 +502,19 @@
   background: linear-gradient(135deg, var(--primary2) 0%, var(--primary) 55%, #4f46e5 130%);
   box-shadow: 0 16px 28px rgba(109,40,217,.18);
 }
-.primaryBtn:disabled{ opacity:.65; cursor:not-allowed; }
+.pmBtnPrimary:disabled{ opacity:.65; cursor:not-allowed; }
 
-.secondaryBtn{
+.pmBtnGhost{
   height: 44px;
   padding: 0 14px;
   border-radius: 12px;
   border: 1px solid rgba(15, 23, 42, 0.12);
   background: #fff;
   color: var(--text);
-  font-weight: 900;
+  font-weight: 1000;
   cursor:pointer;
 }
-
-.iconBtn{
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  border: 1px solid rgba(15, 23, 42, 0.10);
-  background:#fff;
-  display:grid;
-  place-items:center;
-  cursor:pointer;
-}
-.iconBtn.ghost{
-  background: transparent;
-  border-color: transparent;
-  box-shadow: none;
-  color:#667085;
-}
+.pmBtnGhost:disabled{ opacity:.65; cursor:not-allowed; }
 
 /* Responsive */
 @media (max-width: 980px){
@@ -473,7 +522,6 @@
 }
 @media (max-width: 780px){
   .pmFiltersCard{ grid-template-columns: 1fr; }
-}
-@media (max-width: 720px){
-  .grid2{ grid-template-columns: 1fr; }
+  .pmImgGrid{ grid-template-columns: 1fr; }
+  .pmGrid2{ grid-template-columns: 1fr; }
 }
